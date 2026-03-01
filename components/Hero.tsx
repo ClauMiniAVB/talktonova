@@ -5,44 +5,66 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Main content - centered */}
-      <div className="relative z-10 text-center px-6">
-        {/* Nova title - massive, light weight */}
-        <motion.h1
-          className="font-display weight-300"
-          style={{ 
-            fontSize: 'clamp(5rem, 18vw, 14rem)',
-            letterSpacing: '-0.05em',
-            lineHeight: '0.85',
-            fontWeight: 300,
-          }}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          Nova
-        </motion.h1>
+      {/* Gradient glows */}
+      <div className="hero-glow hero-glow-teal" />
+      <div className="hero-glow hero-glow-purple" />
+      
+      {/* Logo top-left */}
+      <div className="absolute top-8 left-8 z-20">
+        <span className="text-sm font-medium tracking-wider text-muted">LUMATH</span>
+      </div>
 
-        {/* Tagline - smaller, secondary */}
-        <motion.p
-          className="mt-8 max-w-xl mx-auto"
-          style={{
-            fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-            fontWeight: 300,
-            color: 'var(--secondary)',
-            lineHeight: 1.5,
+      {/* Main content */}
+      <div className="relative z-10 text-center px-6">
+        <motion.h1
+          className="font-bold tracking-tight"
+          style={{ 
+            fontSize: 'clamp(3rem, 8vw, 4.5rem)',
+            textTransform: 'uppercase',
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
           }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          Relational Intelligence.
-          <br />
-          <span className="text-white/60">Not predictive guessing.</span>
+          <span className="gradient-text">Nova</span>
+        </motion.h1>
+
+        <motion.p
+          className="mt-6 text-body-lg text-body max-w-lg mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+        >
+          Relational Intelligence
         </motion.p>
+        
+        <motion.p
+          className="mt-2 text-muted max-w-md mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+        >
+          Not predictive guessing.
+        </motion.p>
+
+        <motion.div
+          className="mt-10 flex gap-4 justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <a href="#access" className="btn-primary">
+            Try Nova
+          </a>
+          <a href="#framework" className="btn-secondary">
+            Learn More
+          </a>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator - bottom */}
+      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-12 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
@@ -51,19 +73,13 @@ export default function Hero() {
       >
         <motion.a
           href="#sudoku"
-          className="block text-secondary/50 hover:text-secondary transition-colors duration-300"
+          className="block text-muted/50 hover:text-muted transition-colors duration-300"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
         </motion.a>
       </motion.div>
-
-      {/* Subtle corner accents */}
-      <div className="absolute top-8 left-8 w-12 h-12 border-l border-t border-white/10" />
-      <div className="absolute top-8 right-8 w-12 h-12 border-r border-t border-white/10" />
-      <div className="absolute bottom-8 left-8 w-12 h-12 border-l border-b border-white/10" />
-      <div className="absolute bottom-8 right-8 w-12 h-12 border-r border-b border-white/10" />
     </section>
   )
 }

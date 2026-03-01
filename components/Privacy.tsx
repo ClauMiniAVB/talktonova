@@ -4,34 +4,36 @@ import { motion } from 'framer-motion'
 
 export default function Privacy() {
   return (
-    <section className="py-24 sm:py-32 px-6 border-t border-border">
-      <div className="max-w-prose mx-auto">
+    <section className="py-24 px-6">
+      <div className="max-w-content mx-auto">
+        <div className="section-divider mb-24" />
+        
         <motion.h2
-          className="text-2xl font-semibold mb-8"
+          className="text-display-md font-bold uppercase text-foreground mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
         >
           Privacy and Control
         </motion.h2>
         
         <motion.p
-          className="text-lg text-foreground mb-4"
+          className="text-xl text-foreground mb-4 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           Your conversations are yours.
         </motion.p>
         
         <motion.p
-          className="text-lg text-secondary"
+          className="text-muted max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Used to improve the discussion in the moment. Not to train external models. Not to profile. Not to sell.
         </motion.p>
