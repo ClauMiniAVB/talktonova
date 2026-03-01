@@ -22,15 +22,27 @@ body {
   font-feature-settings: "ss01", "ss02";
 }
 
-/* Subtle grid background */
+/* Layered background: grid + radial glow */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
   background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(255,255,255,0.02) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 90% 80%, rgba(255,255,255,0.015) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
