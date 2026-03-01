@@ -9,7 +9,7 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 80)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
@@ -17,35 +17,43 @@ export default function Navigation() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'bg-background/90 backdrop-blur-xl border-b border-white/5' 
+          : 'bg-transparent'
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
     >
-      <div className="max-w-section mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-semibold tracking-tight">
+      <div className="mx-auto px-6 lg:px-12 py-6 flex justify-between items-center max-w-7xl">
+        {/* Logo */}
+        <Link 
+          href="/" 
+          className="font-display text-lg font-medium tracking-tight text-foreground"
+        >
           Nova
         </Link>
-        <div className="flex items-center gap-8">
+
+        {/* Nav links */}
+        <div className="flex items-center gap-10">
           <Link 
             href="#how-it-works" 
-            className="text-secondary hover:text-foreground transition-colors text-sm"
+            className="text-sm text-secondary hover:text-foreground transition-colors duration-300"
           >
             How it works
           </Link>
           <Link 
             href="#for-builders" 
-            className="text-secondary hover:text-foreground transition-colors text-sm"
+            className="text-sm text-secondary hover:text-foreground transition-colors duration-300"
           >
             For Builders
           </Link>
           <Link 
             href="#early-access" 
-            className="text-sm bg-foreground text-background px-4 py-2 rounded-md hover:opacity-90 transition-opacity"
+            className="text-sm text-foreground hover:text-secondary transition-colors duration-300"
           >
-            Early Access
+            Early Access →
           </Link>
         </div>
       </div>

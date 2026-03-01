@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
+  --background: #050505;
   --foreground: #fafafa;
+  --secondary: #888888;
+  --tertiary: #555555;
+  --accent: #ffffff;
+  --muted: #1a1a1a;
+  --border: #222222;
 }
 
 html {
@@ -14,88 +19,162 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-feature-settings: "ss01", "ss02";
+}
+
+/* Subtle grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f1f1f;
-  border-radius: 4px;
+  background: #333;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a2a2a;
+  background: #444;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
-  color: #fafafa;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
 }
 
-/* Prose for blog-style content */
-.prose {
-  max-width: 65ch;
-  line-height: 1.625;
+/* Display typography */
+.display-xl {
+  font-size: clamp(4rem, 15vw, 10rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
 }
 
-.prose p {
-  margin-bottom: 1.25em;
+.display-lg {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
-.prose h2 {
-  margin-top: 2em;
-  margin-bottom: 0.75em;
-  font-weight: 600;
-  font-size: 1.5rem;
+.display-md {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.prose h3 {
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-  font-weight: 600;
-  font-size: 1.25rem;
+/* Body text scales */
+.body-lg {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--secondary);
 }
 
-.prose ul, .prose ol {
-  margin-left: 1.5em;
-  margin-bottom: 1.25em;
+.body-md {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--secondary);
 }
 
-.prose li {
-  margin-bottom: 0.5em;
+/* Section spacing */
+.section-pad {
+  padding: clamp(4rem, 12vh, 10rem) clamp(1.5rem, 5vw, 4rem);
 }
 
-.prose a {
-  color: #6366f1;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.prose a:hover {
-  opacity: 0.8;
-}
-
-/* Animation classes */
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+/* Fade in animations */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
   opacity: 0;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fade-in-delay-1 { animation-delay: 0.1s; }
+.fade-in-delay-2 { animation-delay: 0.2s; }
+.fade-in-delay-3 { animation-delay: 0.4s; }
+.fade-in-delay-4 { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth fade for images */
+img {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+/* Prose for long-form content */
+.prose {
+  max-width: 65ch;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+  color: var(--secondary);
+}
+
+.prose h2 {
+  margin-top: 3em;
+  margin-bottom: 1em;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--foreground);
+}
+
+.prose h3 {
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--foreground);
+}
+
+.prose ul, .prose ol {
+  margin-left: 1.25em;
+  margin-bottom: 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.625em;
+  color: var(--secondary);
+}
+
+.prose a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: all 0.2s ease;
+}
+
+.prose a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.prose strong {
+  color: var(--foreground);
+  font-weight: 500;
 }

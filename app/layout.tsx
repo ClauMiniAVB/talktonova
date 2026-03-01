@@ -1,10 +1,19 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['300', '400', '500', '600', '700'],
+})
 
 export const metadata: Metadata = {
   title: 'Nova — Relational Intelligence',
@@ -22,10 +31,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={`${inter.className} bg-background text-foreground antialiased`}>
+    <html 
+      lang="en" 
+      className={`${inter.variable} ${spaceGrotesk.variable} bg-background`}
+    >
+      <body className="font-sans bg-background text-foreground antialiased">
         <Navigation />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

@@ -9,18 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
+        background: '#050505',
         foreground: '#fafafa',
-        secondary: '#a1a1a1',
-        accent: '#6366f1',
-        border: '#1f1f1f',
+        secondary: '#888888',
+        tertiary: '#555555',
+        muted: '#1a1a1a',
+        border: '#222222',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         'prose': '65ch',
-        'section': '720px',
+        'section': '900px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
       },
     },
   },
